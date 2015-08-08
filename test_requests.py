@@ -170,6 +170,11 @@ class RequestsTestCase(unittest.TestCase):
         r = requests.get(httpbin('get') + '?test=true', params={'q': 'test'}, headers=heads)
         assert r.status_code == 200
 
+    def test_HTTP_CAPITALIZE_REASONS(self):
+        r = requests.get('http://google.com/404')
+        assert r.status_code == 404
+        assert r.reason == 'NOT FOUND'
+
     def test_set_cookie_on_301(self):
         s = requests.session()
         url = httpbin('cookies/set?foo=bar')

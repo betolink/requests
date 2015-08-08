@@ -214,7 +214,7 @@ class HTTPAdapter(BaseAdapter):
         # Set encoding.
         response.encoding = get_encoding_from_headers(response.headers)
         response.raw = resp
-        response.reason = response.raw.reason
+        response.reason = response.raw.reason.upper()
 
         if isinstance(req.url, bytes):
             response.url = req.url.decode('utf-8')
